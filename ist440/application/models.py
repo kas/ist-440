@@ -1,15 +1,15 @@
 from django.db import models
 
 
-class MapMarker(models.Model):
-    name = models.CharField()
-    x_coordinate = models.DecimalField()
-    y_coordinate = models.DecimalField()
-
-
 class InsuranceCard(models.Model):
-    company = models.CharField()
-    first_name = models.CharField()
-    last_name = models.CharField()
-    middle_name = models.CharField()
-    number = models.CharField()
+    company = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    middle_name = models.CharField(max_length=255)
+    number = models.CharField(max_length=255)
+
+
+class MapMarker(models.Model):
+    name = models.CharField(max_length=255)
+    x_coordinate = models.DecimalField(decimal_places=3, max_digits=6)
+    y_coordinate = models.DecimalField(decimal_places=3, max_digits=6)

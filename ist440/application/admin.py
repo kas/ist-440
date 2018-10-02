@@ -1,3 +1,5 @@
+from .models import InsuranceCard, MapMarker
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(InsuranceCard)
+admin.site.register(MapMarker)
