@@ -4,10 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-# TODO create logout button in main menu
-# TODO add register link to login screen
-# TODO add main menu link to footer (if logged in)
 # TODO use django login forms and user registration forms
+    # TODO make confirm password actually do something
 # TODO set up insurance cards
 
 
@@ -53,17 +51,10 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            password = form.cleaned_data['password']
-            username = form.cleaned_data['username']
-            user = User()
-            user.email = form.cleaned_data['email']
-            user.password = form.cleaned_data['password']
-            user.username = form.cleaned_data['username']
-            user.save()
-            user = authenticate(request, username=username, password=password)
+            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                # TODO redirect to main menu
+                return redirect('application:main-menu')
             else:
                 form = RegisterForm()
     else:
