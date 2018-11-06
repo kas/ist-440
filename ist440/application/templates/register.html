@@ -2,7 +2,13 @@
 {% block title %}Register | MedEM{% endblock %}
 {% block content %}
 <h1>Register New Account</h1>
-<form>
+<form action="/register/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+<a href="{% url 'application:login' %}">Cancel</a>
+{% comment %} <form>
     {% csrf_token %}
     <div class="form-group">
         <label for="email">Email address</label>
@@ -23,5 +29,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
     <a class="btn btn-secondary" href="#" role="button">Cancel</a>
-</form>
+</form> {% endcomment %}
 {% endblock %}

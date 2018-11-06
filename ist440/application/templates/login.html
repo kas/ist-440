@@ -2,7 +2,13 @@
 {% block title %}Login | MedEM{% endblock %}
 {% block content %}
 <h1>Welcome to MedEM</h1>
-<form>
+<form action="/login/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+<a href="{% url 'application:register' %}">Register</a>
+{% comment %} <form>
     {% csrf_token %}
     <div class="form-group">
         <label for="username">Username</label>
@@ -14,5 +20,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
     <a class="btn btn-secondary" href="#" role="button">Register</a>
-</form>
+</form> {% endcomment %}
 {% endblock %}

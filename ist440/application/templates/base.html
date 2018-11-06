@@ -17,6 +17,9 @@
         </div>
         <div class="text-center">
             <hr>
+            {% if user.is_authenticated %}
+            <a href="{% url 'application:main-menu' %}">Main Menu</a>
+            {% endif %}
             <a href="">About</a>
             <a href="">Contact Us</a>
         </div>

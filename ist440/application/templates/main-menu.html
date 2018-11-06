@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Main Menu | MedEM{% endblock %}
+{% block content %}
+<h1>Main Menu</h1>
+<p><a href="">Need Medical Assistance</a></p>
+<p><a href="">View Insurance Cards</a></p>
+<p><a href="">Edit Account Information</a></p>
+<p><a href="{% url 'application:logout' %}">Logout</a></p>
+{% endblock %}
