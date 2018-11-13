@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Confirm Delete Insurance Card | MedEM{% endblock %}
+{% block content %}
+<h1>Confirm Delete Insurance Card</h1>
+<h2>Are you sure you want to delete this insurance card?</h2>
+<li><b>Company</b> {{ insurance_card.company }}
+<ul>
+<li><b>First name</b> {{ insurance_card.first_name }}</li>
+<li><b>Middle name</b> {{ insurance_card.middle_name }}</li>
+<li><b>Last name</b> {{ insurance_card.last_name }}</li>
+<li><b>Number</b> {{ insurance_card.number }}</li>
+</ul>
+</li>
+<p><a href="{% url 'application:delete-insurance-card' insurance_card.id %}">Delete</a></p>
+<p><a href="{% url 'application:view-insurance-cards' %}">Cancel</a></p>
+{% endblock %}

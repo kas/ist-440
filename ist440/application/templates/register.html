@@ -1,8 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Register | MedEM{% endblock %}
+{% block title %}Register New Account | MedEM{% endblock %}
 {% block content %}
 <h1>Register New Account</h1>
-<h2>If registration is successful, you will be automatically redirected to the Main Menu.</h2>
 <form action="{% url 'application:register' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}

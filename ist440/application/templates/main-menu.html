@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Main Menu</h1>
 <p><a href="">Need Medical Assistance</a></p>
-<p><a href="">View Insurance Cards</a></p>
+<p><a href="{% url 'application:view-insurance-cards' %}">View Insurance Cards</a></p>
 <p><a href="">Edit Account Information</a></p>
 <p><a href="{% url 'application:logout' %}">Logout</a></p>
 {% endblock %}

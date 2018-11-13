@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}View Insurance Cards | MedEM{% endblock %}
+{% block content %}
+<h1>View Insurance Cards</h1>
+{% if insurance_cards %}
+<ul>
+{% for insurance_card in insurance_cards %}
+<li><b>Company</b> {{ insurance_card.company }} <a href="{% url 'application:edit-insurance-card' insurance_card.id %}">Edit</a>
+<ul>
+<li><b>First name</b> {{ insurance_card.first_name }}</li>
+<li><b>Middle name</b> {{ insurance_card.middle_name }}</li>
+<li><b>Last name</b> {{ insurance_card.last_name }}</li>
+<li><b>Number</b> {{ insurance_card.number }}</li>
+</ul>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<h2>No insurance cards found.</h2>
+{% endif %}
+<p><a href="{% url 'application:new-insurance-card' %}">New Insurance Card</a></p>
+{% endblock %}

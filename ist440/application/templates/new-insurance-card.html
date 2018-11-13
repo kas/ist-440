@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}New Insurance Card | MedEM{% endblock %}
+{% block content %}
+<h1>New Insurance Card</h1>
+<form action="{% url 'application:new-insurance-card' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form>
+<a href="{% url 'application:view-insurance-cards' %}">Cancel</a>
+{% endblock %}

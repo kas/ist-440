@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Edit Insurance Card | MedEM{% endblock %}
+{% block content %}
+<h1>Edit Insurance Card</h1>
+<form action="{% url 'application:edit-insurance-card' insurance_card_id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form>
+<p><a href="{% url 'application:confirm-delete-insurance-card' insurance_card_id %}">Delete</a></p>
+<p><a href="{% url 'application:view-insurance-cards' %}">Cancel</a></p>
+{% endblock %}
