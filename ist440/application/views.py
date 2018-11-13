@@ -3,7 +3,6 @@ from .models import InsuranceCard
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import redirect, render
 
@@ -19,10 +18,8 @@ def confirm_delete_insurance_card(request, insurance_card_id):
         insurance_card = InsuranceCard.objects.get(id=insurance_card_id)
     except:
         pass
-    if not insurance_card:
+    if not insurance_card or insurance_card.user != request.user:
         raise Http404
-    elif insurance_card.user != request.user:
-        raise PermissionDenied
     return render(request, 'confirm-delete-insurance-card.html', {'insurance_card': insurance_card})
 
 
@@ -33,10 +30,8 @@ def delete_insurance_card(request, insurance_card_id):
         insurance_card = InsuranceCard.objects.get(id=insurance_card_id)
     except:
         pass
-    if not insurance_card:
+    if not insurance_card or insurance_card.user != request.user:
         raise Http404
-    elif insurance_card.user != request.user:
-        raise PermissionDenied
     insurance_card.delete()
     return redirect('application:view-insurance-cards')
 
@@ -48,10 +43,8 @@ def edit_insurance_card(request, insurance_card_id):
         insurance_card = InsuranceCard.objects.get(id=insurance_card_id)
     except:
         pass
-    if not insurance_card:
+    if not insurance_card or insurance_card.user != request.user:
         raise Http404
-    elif insurance_card.user != request.user:
-        raise PermissionDenied
     if request.method == 'POST':
         form = InsuranceCardForm(request.POST)
         if form.is_valid():
