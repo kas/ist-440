@@ -122,4 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+LOGIN_REDIRECT_URL = 'application:main-menu'
 LOGIN_URL = 'application:login'
+LOGOUT_REDIRECT_URL = 'application:login'

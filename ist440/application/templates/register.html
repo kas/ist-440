@@ -2,32 +2,11 @@
 {% block title %}Register | MedEM{% endblock %}
 {% block content %}
 <h1>Register New Account</h1>
-<form action="/register/" method="post">
+<h2>If registration is successful, you will be automatically redirected to the Main Menu.</h2>
+<form action="{% url 'application:register' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Register" />
 </form>
 <a href="{% url 'application:login' %}">Cancel</a>
-{% comment %} <form>
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="email" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Username">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password">
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-    <a class="btn btn-secondary" href="#" role="button">Cancel</a>
-</form> {% endcomment %}
 {% endblock %}
