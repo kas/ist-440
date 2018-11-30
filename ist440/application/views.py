@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.http import Http404
 from django.shortcuts import redirect, render
 
-# TODO set up insurance cards
 # TODO set up registration form correctly (like login form)
 # TODO fix register view (find better way to verify username doesn't already exist)
 
