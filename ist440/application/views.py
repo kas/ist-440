@@ -1,4 +1,4 @@
-from .forms import InsuranceCardForm, PasswordForm, RegisterForm
+from .forms import InsuranceCardForm, PasswordForm, RegisterForm, UsernameForm
 from .models import InsuranceCard
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -160,6 +160,21 @@ def question_2(request):
 @login_required
 def question_3(request):
     return render(request, 'question-3.html')
+
+
+@login_required
+def update_username(request):
+    if request.method == 'POST':
+        form = UsernameForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            user = request.user
+            user.username = username
+            user.save()
+            return redirect('application:edit-account-information')
+    else:
+        form = UsernameForm()
+    return render(request, 'update-username.html', {'form': form})
 
 
 @login_required

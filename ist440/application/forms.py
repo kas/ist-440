@@ -24,3 +24,9 @@ class RegisterForm(ModelForm):
     class Meta:
         fields = ['email', 'username', 'password']
         model = User
+
+
+class UsernameForm(ModelForm):
+    class Meta:
+        fields = ['username']
+        model = User

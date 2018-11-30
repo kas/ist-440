@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Edit Account Information</h1>
 <ul>
-    <li>Username: {{ request.user.username }} <a href="">Update</a></li>
+    <li>Username: {{ request.user.username }} <a href="{% url 'application:update-username' %}">Update</a></li>
     <li>Email: {{ request.user.email }} <a href="">Update</a></li>
     <li><a href="{% url 'application:change-password' %}">Change password</a></li>
 </ul>
