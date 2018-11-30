@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Question 3 | MedEM{% endblock %}
+{% block content %}
+<h1>Question 3</h1>
+<p>Are you experiencing any of the following symptoms?</p>
+<ol>
+    <li>Pre-existing medical condition</li>
+    <li>Cough, cold, flu symptoms</li>
+    <li>Ear infection or sore throat</li>
+    <li>Persistent skin condition</li>
+    <li>Urinary tract infection</li>
+</ol>
+<a href="{% url 'application:local-family-medical-practitioner' %}">Yes</a>
+<a href="{% url 'application:end' %}">No</a>
+{% endblock %}

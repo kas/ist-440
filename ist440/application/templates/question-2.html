@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Question 2 | MedEM{% endblock %}
+{% block content %}
+<h1>Question 2</h1>
+<p>Are you experiencing any of the following symptoms?</p>
+<ol>
+    <li>Cough, cold, or sore throat, earache</li>
+    <li>Skin irritations or rashes</li>
+    <li>Fever or flu-like symptoms</li>
+    <li>Minor injury or trauma</li>
+</ol>
+<a href="{% url 'application:urgent-care' %}">Yes</a>
+<a href="{% url 'application:question-3' %}">No</a>
+{% endblock %}

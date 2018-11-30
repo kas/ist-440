@@ -11,6 +11,30 @@ from django.shortcuts import redirect, render
 # TODO fix register view (find better way to verify username doesn't already exist)
 
 
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            user = None
+            try:
+                user = User.objects.get(username=username)
+            except:
+                pass
+            if user is not None:
+                form = RegisterForm()
+            else:
+                user = User.objects.create_user(username, form.cleaned_data['email'], form.cleaned_data['password'])
+                if user is not None:
+                    login(request, user)
+                    return redirect('application:main-menu')
+                else:
+                    form = RegisterForm()
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', {'form': form})
+
+
 @login_required
 def confirm_delete_insurance_card(request, insurance_card_id):
     insurance_card = None
@@ -66,6 +90,11 @@ def emergency_room(request):
 
 
 @login_required
+def end(request):
+    return render(request, 'end.html')
+
+
+@login_required
 def local_family_medical_practitioner(request):
     return render(request, 'local-family-medical-practitioner.html')
 
@@ -73,6 +102,11 @@ def local_family_medical_practitioner(request):
 @login_required
 def main_menu(request):
     return render(request, 'main-menu.html')
+
+
+@login_required
+def need_medical_assistance(request):
+    return render(request, 'need-medical-assistance.html')
 
 
 @login_required
@@ -94,28 +128,19 @@ def new_insurance_card(request):
     return render(request, 'new-insurance-card.html', {'form': form})
 
 
-def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            user = None
-            try:
-                user = User.objects.get(username=username)
-            except:
-                pass
-            if user is not None:
-                form = RegisterForm()
-            else:
-                user = User.objects.create_user(username, form.cleaned_data['email'], form.cleaned_data['password'])
-                if user is not None:
-                    login(request, user)
-                    return redirect('application:main-menu')
-                else:
-                    form = RegisterForm()
-    else:
-        form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+@login_required
+def question_1(request):
+    return render(request, 'question-1.html')
+
+
+@login_required
+def question_2(request):
+    return render(request, 'question-2.html')
+
+
+@login_required
+def question_3(request):
+    return render(request, 'question-3.html')
 
 
 @login_required

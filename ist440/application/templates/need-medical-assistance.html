@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Need Medical Assistance | MedEM{% endblock %}
+{% block content %}
+<h1>Need Medical Assistance</h1>
+<p>MedEM is now going to ask some quick questions in order to determine where the best medical facility is located for your situation.</p>
+<a href="{% url 'application:question-1' %}">OK</a>
+<a href="{% url 'application:emergency-room' %}">Closest Emergency Room</a>
+{% endblock %}

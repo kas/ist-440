@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Question 1 | MedEM{% endblock %}
+{% block content %}
+<h1>Question 1</h1>
+<p>Are you experiencing any of the following symptoms?</p>
+<ol>
+    <li>Wheezing, sudden numbness, dizziness</li>
+    <li>Open wound, bleeding that cannot be stopped, abdominal pain</li>
+    <li>Coughing or vomiting blood</li>
+    <li>Severe headache or head injury</li>
+    <li>Sudden inability to see, walk, or move</li> 
+</ol>
+<a href="{% url 'application:emergency-room' %}">Yes</a>
+<a href="{% url 'application:question-2' %}">No</a>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}End | MedEM{% endblock %}
+{% block content %}
+<h1>End</h1>
+<p>If your symptoms were not listed and seem life threatening, please proceed to your nearest <a href="{% url 'application:emergency-room' %}">emergency room</a>.</p>
+<p>If your symptoms are not life threatening, please proceed to your nearest <a href="{% url 'application:local-family-medical-practitioner' %}">local family medical practitioner</a>.</p>
+{% endblock %}
