@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Update Email | MedEM{% endblock %}
+{% block content %}
+<h1>Update Email</h1>
+<form action="{% url 'application:update-email' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form>
+<a href="{% url 'application:edit-account-information' %}">Cancel</a>
+{% endblock %}

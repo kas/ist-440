@@ -18,6 +18,7 @@ urlpatterns = [
     path('question-2/', views.question_2, name='question-2'),
     path('question-3/', views.question_3, name='question-3'),
     path('register/', views.register, name='register'),
+    path('update-email/', views.update_email, name='update-email'),
     path('update-username/', views.update_username, name='update-username'),
     path('urgent-care/', views.urgent_care, name='urgent-care'),
     path('view-insurance-cards/', views.view_insurance_cards, name='view-insurance-cards'),

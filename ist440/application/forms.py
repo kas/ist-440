@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 
 
+class EmailForm(ModelForm):
+    class Meta:
+        fields = ['email']
+        model = User
+
+
 class InsuranceCardForm(ModelForm):
     class Meta:
         fields = ['company', 'first_name', 'middle_name', 'last_name', 'number']
