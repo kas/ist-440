@@ -4,8 +4,10 @@ from django.urls import include, path
 app_name = 'application'
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
+    path('change-password/', views.change_password, name='change-password'),
     path('confirm-delete-insurance-card/<insurance_card_id>/', views.confirm_delete_insurance_card, name='confirm-delete-insurance-card'),
     path('delete-insurance-card/<insurance_card_id>/', views.delete_insurance_card, name='delete-insurance-card'),
+    path('edit-account-information/', views.edit_account_information, name='edit-account-information'),
     path('edit-insurance-card/<insurance_card_id>/', views.edit_insurance_card, name='edit-insurance-card'),
     path('emergency-room/', views.emergency_room, name='emergency-room'),
     path('end/', views.end, name='end'),

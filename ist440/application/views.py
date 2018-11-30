@@ -1,4 +1,4 @@
-from .forms import InsuranceCardForm, RegisterForm
+from .forms import InsuranceCardForm, PasswordForm, RegisterForm
 from .models import InsuranceCard
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -35,6 +35,21 @@ def register(request):
 
 
 @login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data['password']
+            user = request.user
+            user.set_password(password)
+            user.save()
+            return redirect('application:edit-account-information')
+    else:
+        form = PasswordForm()
+    return render(request, 'change-password.html', {'form': form})
+
+
+@login_required
 def confirm_delete_insurance_card(request, insurance_card_id):
     insurance_card = None
     try:
@@ -57,6 +72,11 @@ def delete_insurance_card(request, insurance_card_id):
         raise Http404
     insurance_card.delete()
     return redirect('application:view-insurance-cards')
+
+
+@login_required
+def edit_account_information(request):
+    return render(request, 'edit-account-information.html')
 
 
 @login_required

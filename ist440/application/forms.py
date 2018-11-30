@@ -6,13 +6,21 @@ from django.forms import ModelForm
 
 class InsuranceCardForm(ModelForm):
     class Meta:
-        model = InsuranceCard
         fields = ['company', 'first_name', 'middle_name', 'last_name', 'number']
+        model = InsuranceCard
+
+
+class PasswordForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        fields = ['password']
+        model = User
 
 
 class RegisterForm(ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = User
         fields = ['email', 'username', 'password']
+        model = User
