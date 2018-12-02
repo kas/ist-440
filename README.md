@@ -10,6 +10,8 @@
   * `source venv/bin/activate`
 * Install the package dependencies
   * `pip install -r requirements.txt`
+* Create `.env` in the repository root and add a secret key
+  * `SECRET_KEY=`
 * Start the project
   * `cd ist440`
   * `python manage.py runserver`
